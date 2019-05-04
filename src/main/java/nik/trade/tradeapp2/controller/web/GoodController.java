@@ -4,6 +4,7 @@ package nik.trade.tradeapp2.controller.web;
 import nik.trade.tradeapp2.forms.GoodForm;
 import nik.trade.tradeapp2.model.Good;
 import nik.trade.tradeapp2.service.good.impl.GoodServiceImpl;
+import nik.trade.tradeapp2.service.good.impl.OrderServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +20,8 @@ import java.util.stream.Collectors;
 public class GoodController {
     @Autowired
     GoodServiceImpl goodService;
+    @Autowired
+    OrderServiceImpl orderService;
 
 
     @RequestMapping(value = {"/", "/index"}, method  = RequestMethod.GET)
@@ -43,84 +46,93 @@ public class GoodController {
 
 
     @RequestMapping(value = "/good/add", method = RequestMethod.GET)
-    public String addGood(Model model
-                          ){
-        GoodForm goodForm= new GoodForm();
-       // Good newGood= new Good(goodForm.getId(),goodForm.getName(), goodForm.getPrice(), "",goodForm.getDescription());
-        //goodService.create(newGood);
-        model.addAttribute("goodForm", goodForm);
-        return "addGood";
-
-    }
-
-
-
-
- /*
-    @RequestMapping(value = "/good/add", method = RequestMethod.GET)
     public String addGood(Model model){
         GoodForm goodForm= new GoodForm();
 
-        Map<String, String> mavs = goodService.createAll().stream()
-                .collect(Collectors.toMap(Good::getId,Good::getName, Good::getPrice, Good::getDelivery, Good::getDescription);
-
-
+        Map<String, String> mavs = goodService.getAll().stream()
+                .collect(Collectors.toMap(Good::getId, Good::getName));
 
         model.addAttribute("mavs", mavs);
         model.addAttribute("goodForm", goodForm);
-
         return "addGood";
+
     }
 
-    */
-    /*
     @RequestMapping(value = "/good/add", method = RequestMethod.POST)
     public String addGood(Model model,
-                             @ModelAttribute("goodForm") GoodForm goodForm){
-        Good good= goodService.get(goodForm.getName())
-        Good good = goodService.get(goodForm.getGroup());
+                          @ModelAttribute("goodForm") GoodForm goodForm){
 
-        Student newStudent = new Student(studentForm.getId(), studentForm.getName(), group);
-        studentService.create(newStudent);
-        model.addAttribute("students", studentService.getAll());
-        return "studentList";
+        //Good good = goodService.get(goodForm.getId());
+
+        Good newGood = new Good(goodForm.getName(), goodForm.getPrice(),
+                goodForm.getDelivery(),goodForm.getDescription());
+        goodService.create(newGood);
+        model.addAttribute("students", goodService.getAll());
+        return "redirect:/good/list";
     }
 
 
+    @RequestMapping(value = "/good/edit/{id}", method = RequestMethod.GET)
+    public String editGood(Model model, @PathVariable("id") String id){
 
-    @RequestMapping(value = "/student/edit/{id}", method = RequestMethod.GET)
-    public String editStudent(Model model, @PathVariable("id") String id){
-
-        Student s = studentService.get(id);
+        Good s = goodService.get(id);
+        /*
         Map<String, String> mavs = groupService.getAll().stream()
                 .collect(Collectors.toMap(Group::getId, Group::getName));
+        */
 
+        Map<String, String> mavs = goodService.getAll().stream()
+                .collect(Collectors.toMap(Good::getId, Good::getName));
 
-        StudentForm studentForm = new StudentForm();
-        studentForm.setId(s.getId());
-        studentForm.setName(s.getName());
-        studentForm.setGroup(s.getGroup().getName());
-        model.addAttribute("studentForm", studentForm);
+        GoodForm goodForm = new GoodForm();
+        goodForm.setId(s.getId());
+        goodForm.setName(s.getName());
+        goodForm.setPrice(s.getPrice());
+        goodForm.setDelivery(s.getDelivery());
+        goodForm.setDescription(s.getDescription());
+
+        model.addAttribute("goodForm", goodForm);
         model.addAttribute("mavs", mavs);
-        return "editStudent";
+        return "editGood";
     }
 
-    @RequestMapping(value = "/student/edit/{id}", method = RequestMethod.POST)
-    public String editStudent(Model model,
-                              @ModelAttribute("studentForm") StudentForm studentForm,
+    @RequestMapping(value = "/good/edit/{id}", method = RequestMethod.POST)
+    public String editGood(Model model,
+                              @ModelAttribute("goodForm") GoodForm goodForm,
                               @PathVariable("id") String id){
 
-        Student s = new Student();
-        Group group = groupService.get(studentForm.getGroup());
+        Good s = new Good();
+       // Good good = goodService.get(studentForm.getGroup());
 
-        s.setId(studentForm.getId());
-        s.setName(studentForm.getName());
-        s.setGroup(group);
-        studentService.update(s);
-        model.addAttribute("studentForm", studentForm);
-        return "studentList";
+        s.setId(goodForm.getId());
+        s.setName(goodForm.getName());
+        s.setPrice(goodForm.getPrice());
+        s.setDelivery(goodForm.getDelivery());
+        s.setDescription(goodForm.getDescription());
+
+        goodService.update(s);
+        model.addAttribute("goodForm", goodForm);
+       // return "goodList";
+        return "redirect:/good/list";
     }
-*/
+    @RequestMapping(value = "/good/saleGood/{id}", method = RequestMethod.GET)
+    public String saleGood(Model model, @PathVariable("id") String id){
+
+        Good good = goodService.get(id);
+        Integer count=0;
+        count= orderService.getAll().stream().filter(s ->s.getGood().getName().equals(good.getName())).mapToInt(s ->s.getSumm()).sum();
+        System.out.println("/good/saleGood/{id}"+count);
+        model.addAttribute(count);
+        model.addAttribute(good.getName());
+
+        return "saleGood";
+    }
+
+
+
+
+
+
 }
 
 

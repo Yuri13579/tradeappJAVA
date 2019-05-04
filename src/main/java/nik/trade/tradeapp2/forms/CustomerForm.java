@@ -7,16 +7,6 @@ public class CustomerForm {
     private int phone;
     private String  contactPerson;
 
-    public CustomerForm() {
-    }
-
-    public CustomerForm(String id, String name, String addres, int phone, String contactPerson) {
-        this.id = id;
-        this.name = name;
-        this.addres = addres;
-        this.phone = phone;
-        this.contactPerson = contactPerson;
-    }
 
     public String getId() {
         return id;

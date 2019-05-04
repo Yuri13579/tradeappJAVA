@@ -10,21 +10,19 @@
 </head>
 <body>
 <a href="<@spring.url '/index'/>">Home</a>
-
 <div>
     <fieldset>
-        <legend>Add good</legend>
-        <form name="good" action="" method="POST">
-            name:<@spring.formInput "goodForm.name" "" "text"/>
+        <legend>Add customer</legend>
+        <form name="customer" action="" method="POST">
+            name:<@spring.formInput "customerForm.name" "" "text"/>
             <br>
-            price:<@spring.formInput "goodForm.price" "" "number"/>
+            addres:<@spring.formInput "customerForm.addres" "" "text"/>
             <br>
-            delivery:<@spring.formInput "goodForm.delivery" "" "text"/>
+            phone:<@spring.formInput "customerForm.phone" "" "number"/>
             <br>
-            description:<@spring.formInput "goodForm.description" "" "text"/>
+            contactPerson:<@spring.formInput "customerForm.contactPerson" "" "text"/>
             <br>
-
-            <input type="submit" value="Create"/>
+            <input type="submit" value="Edit"/>
         </form>
     </fieldset>
 </div>

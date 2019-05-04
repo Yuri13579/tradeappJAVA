@@ -8,6 +8,7 @@ public class Tradeapp2Application {
 
     public static void main(String[] args) {
         SpringApplication.run(Tradeapp2Application.class, args);
+
     }
 
 }

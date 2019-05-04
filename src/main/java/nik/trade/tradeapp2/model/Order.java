@@ -1,29 +1,65 @@
 package nik.trade.tradeapp2.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
+@Document
 public class Order {
+    @Id
     private String id;
     private int amount;
     private LocalDate date;
     private Good good;
     private Customer customer;
+    private int count;
+    private int summ;
 
-    public Order(int amount, LocalDate date, Good good, Customer customer) {
+    public int getSumm() {
+        return summ;
+    }
+
+    public void setSumm(int summ) {
+        this.summ = this.amount* this.count;
+    }
+
+
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "amount=" + amount +
+                '}';
+    }
+
+    public Order(int amount, LocalDate date, Good good, Customer customer, int count) {
         this.amount = amount;
         this.date = date;
         this.good = good;
         this.customer = customer;
+        this.count= count;
+        this.summ = this.amount* this.count;
     }
 
-    public Order(String id, int amount, LocalDate date, Good good, Customer customer) {
+    public Order(String id, int amount, LocalDate date, Good good, Customer customer, int count) {
         this.id = id;
         this.amount = amount;
         this.date = date;
         this.good = good;
         this.customer = customer;
+        this.count= count;
+        this.summ = this.amount* this.count;
     }
 
     public Order() {
@@ -82,16 +118,6 @@ public class Order {
         return Objects.hash(id);
     }
 
-    @Override
-    public String toString() {
-        return "Order{" +
-                "id='" + id + '\'' +
-                ", amount=" + amount +
-                ", date=" + date +
-                ", good=" + good +
-                ", customer=" + customer +
-                '}';
-    }
 }
 
 

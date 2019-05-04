@@ -8,6 +8,7 @@ import nik.trade.tradeapp2.service.good.interfaces.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 @Service
@@ -15,12 +16,18 @@ public class CustomerServiceImpl implements ICustomerService {
 
     private static List<Customer> customers = new ArrayList<>();
 
+
+
     @Autowired
     CustomerServiceImpl customerService;
 
-
     @Autowired
     CustomerRepisitory  customerRepisitory;
+
+    @PostConstruct
+    void init(){
+        System.out.println(customerRepisitory.findAll());
+    }
 
     @Override
     public Customer create(Customer customer) {
@@ -35,6 +42,7 @@ public class CustomerServiceImpl implements ICustomerService {
     public Customer get(String id) {
         return this.customerRepisitory.findById(id).orElse(null);
     }
+
 
     @Override
     public Customer update(Customer customer) {
@@ -51,4 +59,7 @@ public class CustomerServiceImpl implements ICustomerService {
 
         return this.customerRepisitory.findAll();
     }
+
+
+
 }

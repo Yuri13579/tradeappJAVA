@@ -6,6 +6,7 @@ import nik.trade.tradeapp2.service.good.interfaces.IGoodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +20,11 @@ public class GoodServiceImpl implements IGoodService {
 
     @Autowired
     GoodRepisitory repisitory;
+
+    @PostConstruct
+    void init(){
+        System.out.println(repisitory.findAll());
+    }
 
     @Override
     public Good create(Good good) {

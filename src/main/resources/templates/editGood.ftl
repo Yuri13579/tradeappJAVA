@@ -10,7 +10,8 @@
 </head>
 <body>
 <a href="<@spring.url '/index'/>">Home</a>
-
+<br>
+<a href="<@spring.url '/good/list'/>">Good List</a>
 <div>
     <fieldset>
         <legend>Add good</legend>
@@ -23,8 +24,7 @@
             <br>
             description:<@spring.formInput "goodForm.description" "" "text"/>
             <br>
-
-            <input type="submit" value="Create"/>
+            <input type="submit" value="Edit"/>
         </form>
     </fieldset>
 </div>

@@ -6,10 +6,12 @@ import nik.trade.tradeapp2.repository.GoodRepisitory;
 import nik.trade.tradeapp2.repository.OrderRepository;
 import nik.trade.tradeapp2.service.good.impl.CustomerServiceImpl;
 import nik.trade.tradeapp2.service.good.impl.GoodServiceImpl;
+import nik.trade.tradeapp2.service.good.impl.OrderServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.PostConstruct;
+import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,6 +23,10 @@ public class FakeDataSource {
     GoodServiceImpl goodService;
     @Autowired
     CustomerServiceImpl customerService;
+    @Autowired
+    OrderServiceImpl orderService;
+
+
 
     private List<Good> goods = new ArrayList<>(
                 Arrays.asList(
@@ -37,6 +43,22 @@ public class FakeDataSource {
 
             ));
 
+    private  List<Order> orders= new ArrayList<>(
+            Arrays.asList(
+
+                 /*   new Order(13, LocalDate.now(),goodService.getAll().get(0) , customerService.getAll().get(0) ),
+                    new Order(13, LocalDate.now(),goodService.getAll().get(1) , customerService.getAll().get(1) ),
+                    new Order(13, LocalDate.now(),goodService.getAll().get(2) , customerService.getAll().get(2) ),
+                    new Order(13, LocalDate.now(),goodService.getAll().get(3) , customerService.getAll().get(3) ),
+                    new Order(13, LocalDate.now(),goodService.getAll().get(4) , customerService.getAll().get(4) )*/
+
+
+
+            )
+    );
+
+
+
 
     public List<Good> getGoods() {
             return goods;
@@ -46,7 +68,7 @@ public class FakeDataSource {
     void init(){
             // customerService.createAll(customers);
        //goodService.createAll(goods);
-
+      //  orderService.createAll(orders);
     }
 
 }

@@ -4,7 +4,6 @@ import nik.trade.tradeapp2.model.Delivery;
 
 public class GoodForm {
 
-
     private String id;
     private String name;
     private int price;
@@ -50,7 +49,7 @@ public class GoodForm {
     }
 
     public void setDescription(String description) {
-        description = description;
+        this.description = description;
     }
 
     @Override
