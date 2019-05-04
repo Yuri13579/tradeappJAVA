@@ -62,15 +62,22 @@ public class OrderForm {
         return good;
     }
 
-    public void setGood(String goodId) {
+   /* public void setGood(String goodId) {
         this.good = good;
-    }
+    }*/
+   public void setGood(String good) {
+       this.good = good;
+   }
 
     public String getCustomer() {
         return customer;
     }
 
-    public void setCustomerID(String customerID) {
+   /* public void setCustomerID(String customerID) {
+        this.customer = customer;
+    }*/
+
+    public void setCustomer(String customer) {
         this.customer = customer;
     }
 

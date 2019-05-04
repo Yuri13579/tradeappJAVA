@@ -4,6 +4,7 @@ import nik.trade.tradeapp2.forms.CustomerForm;
 import nik.trade.tradeapp2.forms.GoodForm;
 import nik.trade.tradeapp2.model.Customer;
 import nik.trade.tradeapp2.model.Good;
+import nik.trade.tradeapp2.model.Order;
 import nik.trade.tradeapp2.service.good.impl.CustomerServiceImpl;
 import nik.trade.tradeapp2.service.good.impl.GoodServiceImpl;
 import nik.trade.tradeapp2.service.good.impl.OrderServiceImpl;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -24,6 +26,10 @@ public class CustomerController {
     CustomerServiceImpl customerService;
     @Autowired
     OrderServiceImpl orderService;
+    @Autowired
+    GoodServiceImpl goodService;
+
+
 
     @RequestMapping(value = "/customer/list", method = RequestMethod.GET)
     public String customerList(Model model){
@@ -118,7 +124,11 @@ public class CustomerController {
         model.addAttribute(count);
         model.addAttribute(customer.getName());
 
-        return "saleGood";
+        List<Order> orders= orderService.getAll().stream().
+                filter(order -> order.getCustomer().equals(customer)).collect(Collectors.toList());
+
+        model.addAttribute("orders",orders );
+        return "saleCustomer";
     }
 
 }

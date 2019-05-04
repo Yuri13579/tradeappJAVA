@@ -2,7 +2,9 @@ package nik.trade.tradeapp2.controller.web;
 
 
 import nik.trade.tradeapp2.forms.GoodForm;
+import nik.trade.tradeapp2.model.Customer;
 import nik.trade.tradeapp2.model.Good;
+import nik.trade.tradeapp2.model.Order;
 import nik.trade.tradeapp2.service.good.impl.GoodServiceImpl;
 import nik.trade.tradeapp2.service.good.impl.OrderServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -118,13 +121,16 @@ public class GoodController {
     @RequestMapping(value = "/good/saleGood/{id}", method = RequestMethod.GET)
     public String saleGood(Model model, @PathVariable("id") String id){
 
-        Good good = goodService.get(id);
+        Good good= goodService.get(id);
         Integer count=0;
-        count= orderService.getAll().stream().filter(s ->s.getGood().getName().equals(good.getName())).mapToInt(s ->s.getSumm()).sum();
-        System.out.println("/good/saleGood/{id}"+count);
+        count= orderService.getAll().stream().
+                filter(order -> order.getGood().getName().equals(good.getName()))
+                .mapToInt(order ->order.getSumm()).sum();
         model.addAttribute(count);
         model.addAttribute(good.getName());
-
+       List<Order> orders= orderService.getAll().stream().
+               filter(order -> order.getGood().equals(good)).collect(Collectors.toList());
+        model.addAttribute("orders",orders );
         return "saleGood";
     }
 

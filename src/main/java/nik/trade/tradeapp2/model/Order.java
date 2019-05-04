@@ -93,6 +93,10 @@ public class Order {
         return good;
     }
 
+    public String getGoodName() {
+        return good.getName();
+    }
+
     public void setGood(Good good) {
         this.good = good;
     }

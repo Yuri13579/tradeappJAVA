@@ -3,6 +3,8 @@ package nik.trade.tradeapp2.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Objects;
+
 @Document
 public class Customer {
     @Id
@@ -11,6 +13,23 @@ public class Customer {
     private String addres;
     private int phone;
     private String  contactPerson;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Customer customer = (Customer) o;
+        return phone == customer.phone &&
+                Objects.equals(id, customer.id) &&
+                Objects.equals(name, customer.name) &&
+                Objects.equals(addres, customer.addres) &&
+                Objects.equals(contactPerson, customer.contactPerson);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, addres, phone, contactPerson);
+    }
 
     public Customer() {
     }
@@ -70,4 +89,6 @@ public class Customer {
     public void setContactPerson(String contactPerson) {
         this.contactPerson = contactPerson;
     }
+
+
 }
