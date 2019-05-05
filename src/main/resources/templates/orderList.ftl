@@ -20,27 +20,31 @@
         <table class="table table-dark">
             <thead>
             <tr>
-                <th>Amount</th>
+
                 <th>Date</th>
                 <th>Good</th>
                 <th>Customer</th>
                 <th>Count</th>
+                <th>PriseSale</th>
                 <th>Summ</th>
+                <th>Margin</th>
+                <th>Profit</th>
                 <th>Delete</th>
             </tr>
             </thead>
             <#list orders as order>
             <tbody>
             <tr>
-                <td>${order.amount}</td>
                 <td>${order.date}</td>
                 <td>${order.good.name}</td>
                 <td>${order.customer.name}</td>
                 <td>${order.count}</td>
+                <td>${order.priseSale}</td>
                 <td>${order.summ}</td>
-                <td><a href="/good/delete/${order.id}">Delete</a> </td>
-                <td><a href="/good/edit/${order.id}">Edit</a></td>
-
+                <td>${order.margin}</td>
+                <td>${order.profit}</td>
+                <td><a href="/order/delete/${order.id}">Delete</a> </td>
+                <td><a href="/order/edit/${order.id}">Edit</a></td>
             </tr>
             </tbody>
             </#list>

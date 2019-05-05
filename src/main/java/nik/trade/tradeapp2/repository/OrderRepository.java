@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface OrderRepository extends MongoRepository<Order,String> {
-    List<Order> findByamount(int amount);
+    List<Order> findByPriseSale(int priseSale);
     List<Order> findByDate (LocalDate date);
     List<Order> findByCustomer (Customer customer);
 }

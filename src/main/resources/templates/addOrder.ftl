@@ -16,19 +16,20 @@
         <legend>Add order</legend>
         <form name="order" action="" method="POST">
 
-            amount:<@spring.formInput "orderForm.amount" "" "number"/>
+            date:<@spring.formInput "orderForm.date" "" "date"/>
             <br>
+
            <#-- name:<@spring.formInput "orderForm.good" "" "text"/>
            <br>-->
            <#-- customer:<@spring.formInput "orderForm.customer" "" "text"/>
             <br>-->
-            date:<@spring.formInput "orderForm.date" "" "date"/>
-            <br>
             <@spring.formSingleSelect "orderForm.good", mavsGood, "text"/>
             <br>
             <@spring.formSingleSelect "orderForm.customer", mavsCustomer, "text"/>
             <br>
             count:<@spring.formInput "orderForm.count" "" "number"/>
+            <br>
+            priseSale:<@spring.formInput "orderForm.priseSale" "" "number"/>
             <br>
             <input class="btn btn-primary" type="submit" value="Create"/>
 

@@ -20,7 +20,7 @@
             <br>
             price:<@spring.formInput "goodForm.price" "" "number"/>
             <br>
-            delivery:<@spring.formInput "goodForm.delivery" "" "text"/>
+            delivery:<@spring.formInput "goodForm.purchasePrise" "" "number"/>
             <br>
             description:<@spring.formInput "goodForm.description" "" "text"/>
             <br>

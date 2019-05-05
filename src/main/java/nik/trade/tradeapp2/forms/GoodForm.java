@@ -1,21 +1,19 @@
 package nik.trade.tradeapp2.forms;
 
-import nik.trade.tradeapp2.model.Delivery;
-
 public class GoodForm {
 
     private String id;
     private String name;
     private int price;
-    private String delivery;
+    private int purchasePrise;
     private String description;
 
-    public String getDelivery() {
-        return delivery;
+    public int getPurchasePrise() {
+        return purchasePrise;
     }
 
-    public void setDelivery(String delivery) {
-        this.delivery = delivery;
+    public void setPurchasePrise(int purchasePrise) {
+        this.purchasePrise = purchasePrise;
     }
 
     public String getId() {
@@ -58,7 +56,7 @@ public class GoodForm {
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", price=" + price +
-                ", delivery=" + delivery +
+                ", purchasePrise=" + purchasePrise +
                 ", Description='" + description + '\'' +
                 '}';
     }

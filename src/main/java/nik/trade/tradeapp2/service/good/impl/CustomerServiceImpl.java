@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 @Service
 public class CustomerServiceImpl implements ICustomerService {
@@ -24,11 +25,24 @@ public class CustomerServiceImpl implements ICustomerService {
     @Autowired
     CustomerRepisitory  customerRepisitory;
 
-    @PostConstruct
-    void init(){
-        System.out.println(customerRepisitory.findAll());
-    }
+      /*@PostConstruct
+        void init(){
+          List<Customer> customers= new ArrayList<>(
+                    Arrays.asList(
+                           new Customer("Roma","вул Коломийська", 564728, "Marya"),
+                            new Customer("Auchan","вул Хотинська", 414728, "Marya"),
+                            new Customer("Нива","вул Головна", 509364, "Ivan"),
+                            new Customer("Watsons","вул Головна", 780728, "Iren"),
+                            new Customer("Сільпо","вул Головна", 987223, "Marya"),
+                            new Customer("КЛАСІК-КООП","вул Коломийська", 754728, "Ivan"),
+                            new Customer("Eva","вул Головна", 575528, "Iren"),
+                            new Customer("Prostor","вул Головна", 981334, "Olha"),
+                            new Customer("Копійочка","вул Головна", 745223, "Marya")
+                    )
+            );
+          customerRepisitory.saveAll(customers);
 
+        }*/
     @Override
     public Customer create(Customer customer) {
         return this.customerRepisitory.save(customer);

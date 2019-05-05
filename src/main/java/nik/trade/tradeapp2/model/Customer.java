@@ -11,7 +11,7 @@ public class Customer {
     private String id;
     private String name;
     private String addres;
-    private int phone;
+    private long phone;
     private String  contactPerson;
 
     @Override
@@ -34,7 +34,7 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(String id, String name, String addres, int phone, String contactPerson) {
+    public Customer(String id, String name, String addres, long phone, String contactPerson) {
         this.id = id;
         this.name = name;
         this.addres = addres;
@@ -42,7 +42,7 @@ public class Customer {
         this.contactPerson = contactPerson;
     }
 
-    public Customer(String name, String addres, int phone, String contactPerson) {
+    public Customer(String name, String addres, long phone, String contactPerson) {
         this.name = name;
         this.addres = addres;
         this.phone = phone;
@@ -74,11 +74,11 @@ public class Customer {
         this.addres = addres;
     }
 
-    public int getPhone() {
+    public long getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(long phone) {
         this.phone = phone;
     }
 

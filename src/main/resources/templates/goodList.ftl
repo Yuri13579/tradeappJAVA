@@ -20,7 +20,7 @@
             <tr>
                 <th>Name</th>
                 <th>Prise</th>
-                <th>Delivery</th>
+                <th>purchasePrise</th>
                 <th>Description</th>
                 <th>Delete</th>
             </tr>
@@ -30,7 +30,7 @@
                 <tr>
                     <td>${good.name}</td>
                     <td>${good.price}</td>
-                    <td>${good.delivery}</td>
+                    <td>${good.purchasePrise}</td>
                     <td>${good.description}</td>
                     <td><a href="/good/saleGood/${good.id}">saleGood</a></td>
                     <td><a href="/good/delete/${good.id}">Delete</a> </td>

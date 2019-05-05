@@ -68,7 +68,7 @@ public class GoodController {
         //Good good = goodService.get(goodForm.getId());
 
         Good newGood = new Good(goodForm.getName(), goodForm.getPrice(),
-                goodForm.getDelivery(),goodForm.getDescription());
+                goodForm.getPurchasePrise(),goodForm.getDescription());
         goodService.create(newGood);
         model.addAttribute("students", goodService.getAll());
         return "redirect:/good/list";
@@ -91,7 +91,7 @@ public class GoodController {
         goodForm.setId(s.getId());
         goodForm.setName(s.getName());
         goodForm.setPrice(s.getPrice());
-        goodForm.setDelivery(s.getDelivery());
+        goodForm.setPurchasePrise(s.getPurchasePrise());
         goodForm.setDescription(s.getDescription());
 
         model.addAttribute("goodForm", goodForm);
@@ -110,7 +110,7 @@ public class GoodController {
         s.setId(goodForm.getId());
         s.setName(goodForm.getName());
         s.setPrice(goodForm.getPrice());
-        s.setDelivery(goodForm.getDelivery());
+        s.setPurchasePrise(goodForm.getPurchasePrise());
         s.setDescription(goodForm.getDescription());
 
         goodService.update(s);

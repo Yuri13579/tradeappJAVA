@@ -10,14 +10,22 @@ public class Good {
     @Id
     private String id;
     private String name;
+    private int purchasePrise;
     private int price;
-    private String delivery;
     private String description;
 
-    public Good(String name, int price, String  delivery, String description) {
+    public int getPurchasePrise() {
+        return purchasePrise;
+    }
+
+    public void setPurchasePrise(int purchasePrise) {
+        this.purchasePrise = purchasePrise;
+    }
+
+    public Good(String name, int purchasePrise, int price,  String description) {
         this.name = name;
+        this.purchasePrise = purchasePrise;
         this.price = price;
-        this.delivery = delivery;
         this.description = description;
     }
 
@@ -27,11 +35,11 @@ public class Good {
         this.description = description;
     }
 
-    public Good(String id, String name, int price, String  delivery, String description) {
+    public Good(String id, String name, int purchasePrise, int price,  String description) {
         this.id = id;
         this.name = name;
+        this.purchasePrise = purchasePrise;
         this.price = price;
-        this.delivery = delivery;
         this.description = description;
     }
 
@@ -62,13 +70,7 @@ public class Good {
         this.price = price;
     }
 
-    public String  getDelivery() {
-        return delivery;
-    }
 
-    public void setDelivery(String  delivery) {
-        this.delivery = delivery;
-    }
 
     public String getDescription() {
         return description;
@@ -97,7 +99,7 @@ public class Good {
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", price=" + price +
-                ", delivery=" + delivery +
+                ", purchasePrise=" + purchasePrise +
                 ", Description='" + description + '\'' +
                 '}';
     }

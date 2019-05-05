@@ -15,6 +15,35 @@ public class OrderForm {
     private String customer;
     private int count;
     private int summ;
+    private int priseSale;
+    private int profit;
+    private float margin;
+
+    public int getPriseSale() {
+        return priseSale;
+    }
+
+    public void setPriseSale(int priseSale) {
+        this.priseSale = priseSale;
+    }
+
+    public int getProfit() {
+        return profit;
+    }
+
+    public void setProfit(int profit) {
+        this.profit = profit;
+        //this.profit= (this.priseSale - this.good.getPurchasePrise()) * this.count;
+    }
+
+    public float getMargin() {
+        return this.margin;
+    }
+
+    public void setMargin(float margin) {
+        this.margin = margin;
+    }
+
 
     public int getSumm() {
         return summ;

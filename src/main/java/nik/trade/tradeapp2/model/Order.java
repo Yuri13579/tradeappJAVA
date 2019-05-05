@@ -11,19 +11,49 @@ import java.util.Objects;
 public class Order {
     @Id
     private String id;
-    private int amount;
+ //   private int amount;
     private LocalDate date;
     private Good good;
     private Customer customer;
     private int count;
     private int summ;
+    private int priseSale;
+    private int profit;
+    private float margin;
+
+    public int getPriseSale() {
+        return priseSale;
+    }
+
+    public void setPriseSale(int priseSale) {
+        this.priseSale = priseSale;
+    }
+
+    public int getProfit() {
+        return profit;
+    }
+
+    public void setProfit(int profit) {
+        this.profit = profit;
+        //this.profit= (this.priseSale - this.good.getPurchasePrise()) * this.count;
+    }
+
+    public float getMargin() {
+        return this.margin;
+    }
+
+    public void setMargin(float margin) {
+        this.margin = margin;
+    }
+
+
 
     public int getSumm() {
         return summ;
     }
 
     public void setSumm(int summ) {
-        this.summ = this.amount* this.count;
+        this.summ = summ;
     }
 
 
@@ -36,30 +66,32 @@ public class Order {
         this.count = count;
     }
 
-    @Override
-    public String toString() {
-        return "Order{" +
-                "amount=" + amount +
-                '}';
-    }
 
-    public Order(int amount, LocalDate date, Good good, Customer customer, int count) {
-        this.amount = amount;
+
+    public Order( LocalDate date, Good good, Customer customer, int count, int priseSale) {
+      //  this.amount = amount;
         this.date = date;
         this.good = good;
         this.customer = customer;
         this.count= count;
-        this.summ = this.amount* this.count;
+        this.summ = this.priseSale* this.count;
+        this.priseSale= priseSale;
+        this.profit= (this.priseSale - this.good.getPurchasePrise()) * this.count;
+        this.margin= this.priseSale/ this.good.getPurchasePrise();
     }
 
-    public Order(String id, int amount, LocalDate date, Good good, Customer customer, int count) {
+
+    public Order(String id, LocalDate date, Good good, Customer customer, int count, int priseSale) {
         this.id = id;
-        this.amount = amount;
+       // this.amount = amount;
         this.date = date;
         this.good = good;
         this.customer = customer;
         this.count= count;
-        this.summ = this.amount* this.count;
+        this.summ = this.priseSale * this.count;
+        this.priseSale= priseSale;
+        this.profit= (this.priseSale - this.good.getPurchasePrise()) * this.count;
+        this.margin= this.priseSale/ this.good.getPurchasePrise();
     }
 
     public Order() {
@@ -73,13 +105,6 @@ public class Order {
         this.id = id;
     }
 
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
 
     public LocalDate getDate() {
         return date;

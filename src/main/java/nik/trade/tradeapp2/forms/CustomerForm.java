@@ -4,7 +4,7 @@ public class CustomerForm {
     private String id;
     private String name;
     private String addres;
-    private int phone;
+    private long phone;
     private String  contactPerson;
 
 
@@ -32,11 +32,11 @@ public class CustomerForm {
         this.addres = addres;
     }
 
-    public int getPhone() {
+    public long getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(long phone) {
         this.phone = phone;
     }
 

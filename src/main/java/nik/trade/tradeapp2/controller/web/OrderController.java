@@ -9,11 +9,13 @@ import nik.trade.tradeapp2.service.good.impl.CustomerServiceImpl;
 import nik.trade.tradeapp2.service.good.impl.GoodServiceImpl;
 import nik.trade.tradeapp2.service.good.impl.OrderServiceImpl;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -63,26 +65,12 @@ public class OrderController {
 
         Customer customer= customerService.get(orderForm.getCustomer());
         Good good= goodService.get(orderForm.getGood());
-        Order newOrder= new Order(orderForm.getId(), orderForm.getAmount(),
-        LocalDate.parse(orderForm.getDate()) , good, customer, orderForm.getCount());
+       Order newOrder=  new Order(orderForm.getId(),LocalDate.parse(orderForm.getDate()),good,customer,
+       orderForm.getCount(),orderForm.getPriseSale());
+       /* Order newOrder= new Order(orderForm.getId(),
+        LocalDate.parse(orderForm.getDate()) , good, customer, orderForm.getCount());*/
         orderService.create(newOrder);
 
-
-  /*      Customer customer= customerService.getAll().stream()
-               // .filter(customer1 -> customer1.getName().equals(orderForm.getCustomer())).findFirst().orElse(null);
-         .filter(customer1 -> customer1.getId().equals(orderForm.getCustomer())).findFirst().orElse(null);
-        System.out.println("********orderForm.getCustomer()"+ orderForm.getCustomer());
-        Good good= goodService.getAll().stream()
-               // .filter(good1 -> good1.getName().equals(orderForm.getGood())).findFirst().orElse(null);
-        .filter(good1 -> good1.getId().equals(orderForm.getGood())).findFirst().orElse(null);
-        System.out.println("*******orderForm.getGood()"+ orderForm.getGood());
-        System.out.println(orderForm.toString());
-        Order newOrder  = new Order( orderForm.getAmount(), LocalDate.parse(orderForm.getDate()), good,customer, orderForm.getCount());
-
-        if ((good != null)&&(customer != null)) {
-        orderService.create(newOrder);
-        }
-        else System.out.println("good = "+ good+"customer = "+customer);*/
 
         model.addAttribute("orders", orderService.getAll());
         return "redirect:/order/list";
@@ -97,6 +85,13 @@ public class OrderController {
         System.out.println(count);
         model.addAttribute(count);
         return "orderSumm";
+    }
+
+    @RequestMapping(value = "/order/delete/{id}", method = RequestMethod.GET)
+    public String deleteOrder(Model model, @PathVariable("id") String id){
+        orderService.delete(id);
+        model.addAttribute("orders", orderService.getAll());
+        return "orderList";
     }
 
 }
