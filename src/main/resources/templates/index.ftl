@@ -12,17 +12,17 @@
 <body>
 <a href="<@spring.url '/index'/>">Home</a>
 
-<h1>Welcome</h1>
+<h1>Добро пожаловать!</h1>
 
 <br>
 <div>
 
     <ul class="list-rectangle">
 
-    <li><a href="<@spring.url '/good/list'/>" class="list-group-item" >Good List</a> </li>
-    <li><a href="<@spring.url '/customer/list'/>" class="list-group-item active">customer List</a> </li>
-    <li><a href="<@spring.url '/order/list'/>" class="list-group-item">order List</a> </li>
-    <li><a href="<@spring.url '/order/summ'/>" class="list-group-item active">Сума всех заказов</a> </li>
+    <li><a href="<@spring.url '/good/list'/>" class="list-group-item" >Список товаров</a> </li>
+    <li><a href="<@spring.url '/customer/list'/>" class="list-group-item active">Список клиентов</a> </li>
+    <li><a href="<@spring.url '/order/list'/>" class="list-group-item">Продажы</a> </li>
+
 </ul>
     <img src="https://www.advokatkopanchuk.com/wp-content/uploads/2017/02/588.jpg" class="rounded" alt="Cinque Terre" width="150" height="150" >
 

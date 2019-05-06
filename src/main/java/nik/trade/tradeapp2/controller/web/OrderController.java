@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.time.LocalDate;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -80,9 +82,9 @@ public class OrderController {
     @RequestMapping(value = "/order/summ", method = RequestMethod.GET)
     public String orderSumm(Model model){
 
-        Integer count=0;
-        count= orderService.getAll().stream().filter(s ->s.getSumm()>0 ).mapToInt(s ->s.getSumm()).sum();
-        System.out.println(count);
+        double count=0;
+        count= orderService.getAll().stream().filter(s ->s.getSumm()>0 )
+                .mapToDouble(s ->s.getSumm()).sum();
         model.addAttribute(count);
         return "orderSumm";
     }

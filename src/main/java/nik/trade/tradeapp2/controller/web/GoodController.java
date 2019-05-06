@@ -122,10 +122,10 @@ public class GoodController {
     public String saleGood(Model model, @PathVariable("id") String id){
 
         Good good= goodService.get(id);
-        Integer count=0;
+        double count=0;
         count= orderService.getAll().stream().
                 filter(order -> order.getGood().getName().equals(good.getName()))
-                .mapToInt(order ->order.getSumm()).sum();
+                .mapToDouble(order ->order.getSumm()).sum();
         model.addAttribute(count);
         model.addAttribute(good.getName());
        List<Order> orders= orderService.getAll().stream().
@@ -133,6 +133,7 @@ public class GoodController {
         model.addAttribute("orders",orders );
         return "saleGood";
     }
+
 
 
 

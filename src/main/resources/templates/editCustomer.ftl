@@ -12,15 +12,15 @@
 <a href="<@spring.url '/index'/>">Home</a>
 <div>
     <fieldset>
-        <legend>Add customer</legend>
+        <legend>Добавить клиента</legend>
         <form name="customer" action="" method="POST">
-            name:<@spring.formInput "customerForm.name" "" "text"/>
+            название:<@spring.formInput "customerForm.name" "" "text"/>
             <br>
-            addres:<@spring.formInput "customerForm.addres" "" "text"/>
+            адрес:<@spring.formInput "customerForm.addres" "" "text"/>
             <br>
-            phone:<@spring.formInput "customerForm.phone" "" "number"/>
+            телефон:<@spring.formInput "customerForm.phone" "" "number"/>
             <br>
-            contactPerson:<@spring.formInput "customerForm.contactPerson" "" "text"/>
+            имя:<@spring.formInput "customerForm.contactPerson" "" "text"/>
             <br>
             <input type="submit" value="Edit"/>
         </form>

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -118,12 +119,14 @@ public class CustomerController {
     public String saleCustomer(Model model, @PathVariable("id") String id){
 
         Customer customer = customerService.get(id);
-        Integer count=0;
-        count= orderService.getAll().stream().filter(s ->s.getCustomer() .getName().equals(customer.getName())).mapToInt(s ->s.getSumm()).sum();
+        double count=0;
+        count= orderService.getAll().stream().filter(s ->s.getCustomer()
+                .getName().equals(customer.getName()))
+                .mapToDouble(s ->s.getSumm()).sum();
         System.out.println("/customer/saleCustomer/{id}"+count);
+       // model.addAttribute(count);
         model.addAttribute(count);
         model.addAttribute(customer.getName());
-
         List<Order> orders= orderService.getAll().stream().
                 filter(order -> order.getCustomer().equals(customer)).collect(Collectors.toList());
 

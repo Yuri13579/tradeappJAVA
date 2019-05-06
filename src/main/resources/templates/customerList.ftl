@@ -15,24 +15,24 @@
 <br>
 <div>
     <div class="table table-sm" >
-    <table class="text-info">
+    <table class="text-info" border="2">
         <thead>
-            <th>Name</th>
-            <th>Addres</th>
-            <th>Phone</th>
-            <th>ContactPerson</th>
-            <th>Delete</th>
+            <th>Название</th>
+            <th>Адрес</th>
+            <th>телефон</th>
+            <th>Имя</th>
+
         <thead>
             <#list customers as customer>
             <tbody>
                 <tr>
-                    <td>${customer.name}</td>
+                    <td width="250">${customer.name}</td>
                     <td>${customer.addres}</td>
                     <td>${customer.phone}</td>
                     <td>${customer.contactPerson}</td>
-                    <td><a href="/customer/saleCustomer/${customer.id}">saleCustomer</a></td>
-                    <td><a href="/customer/delete/${customer.id}">Delete</a> </td>
-                    <td><a href="/customer/edit/${customer.id}">Edit</a></td> -->
+                    <td><a href="/customer/delete/${customer.id}">удалить</a> </td>
+                    <td><a href="/customer/edit/${customer.id}">редакт</a></td> -->
+                    <td><a href="/customer/saleCustomer/${customer.id}">продажы по клиенту</a></td>
                 </tr>
             </tbody>
             </#list>

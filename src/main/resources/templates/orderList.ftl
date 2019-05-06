@@ -11,40 +11,42 @@
 
 
 <body>
-<a href="<@spring.url '/index'/>">Home</a>
-<h3>Order list</h3>
-<br>
-<a href="/order/add" class="btn btn-primary">Add new order</a>
+    <ul class="nav navbar-nav">
+        <li class="active"><a href="<@spring.url '/index'/>">Home</a></li>
+        <li><a href="/order/add" class="btn btn-primary">Добавить</a></li>
+        <li><a href="<@spring.url '/order/summ'/>" class="list-group-item active">Сума всех заказов</a></li>
+       </ul>
+
+
+
+<h3>Список продаж</h3>
 <div>
     <div class="table table-sm" style="width: 50%;">
-        <table class="table table-dark">
+        <table class="table table-dark" border="2">
             <thead>
             <tr>
-
-                <th>Date</th>
-                <th>Good</th>
-                <th>Customer</th>
-                <th>Count</th>
-                <th>PriseSale</th>
-                <th>Summ</th>
-                <th>Margin</th>
-                <th>Profit</th>
-                <th>Delete</th>
+                <th>Дата</th>
+                <th>Товар</th>
+                <th>Покупотель</th>
+                <th>к-во</th>
+                <th>цена</th>
+                <th>сума</th>
+                <th>Прибиль</th>
+                <th>наценка</th>
             </tr>
             </thead>
             <#list orders as order>
             <tbody>
             <tr>
-                <td>${order.date}</td>
-                <td>${order.good.name}</td>
-                <td>${order.customer.name}</td>
+                <td width="150">${order.date}</td>
+                <td width="250">${order.good.name}</td>
+                <td width="200">${order.customer.name}</td>
                 <td>${order.count}</td>
                 <td>${order.priseSale}</td>
-                <td>${order.summ}</td>
-                <td>${order.margin}</td>
+                <td>${order.margin?string.percent}</td>
                 <td>${order.profit}</td>
+                <td>${order.summ}</td>
                 <td><a href="/order/delete/${order.id}">Delete</a> </td>
-                <td><a href="/order/edit/${order.id}">Edit</a></td>
             </tr>
             </tbody>
             </#list>

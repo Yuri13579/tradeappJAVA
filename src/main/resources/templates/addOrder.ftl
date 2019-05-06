@@ -13,7 +13,7 @@
 
 <div>
     <fieldset>
-        <legend>Add order</legend>
+        <legend>Добавить продажу</legend>
         <form name="order" action="" method="POST">
 
             date:<@spring.formInput "orderForm.date" "" "date"/>
@@ -27,9 +27,9 @@
             <br>
             <@spring.formSingleSelect "orderForm.customer", mavsCustomer, "text"/>
             <br>
-            count:<@spring.formInput "orderForm.count" "" "number"/>
+            к-во:<@spring.formInput "orderForm.count" "" "number"/>
             <br>
-            priseSale:<@spring.formInput "orderForm.priseSale" "" "number"/>
+            цена:<@spring.formInput "orderForm.priseSale" "" "number"/>
             <br>
             <input class="btn btn-primary" type="submit" value="Create"/>
 

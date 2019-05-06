@@ -10,32 +10,32 @@ public class Good {
     @Id
     private String id;
     private String name;
-    private int purchasePrise;
-    private int price;
+    private double purchasePrise;
+    private double price;
     private String description;
 
-    public int getPurchasePrise() {
+    public double getPurchasePrise() {
         return purchasePrise;
     }
 
-    public void setPurchasePrise(int purchasePrise) {
+    public void setPurchasePrise(double purchasePrise) {
         this.purchasePrise = purchasePrise;
     }
 
-    public Good(String name, int purchasePrise, int price,  String description) {
+    public Good(String name, double purchasePrise, double price,  String description) {
         this.name = name;
         this.purchasePrise = purchasePrise;
         this.price = price;
         this.description = description;
     }
 
-    public Good(String name, int price, String description) {
+    public Good(String name, double price, String description) {
         this.name = name;
         this.price = price;
         this.description = description;
     }
 
-    public Good(String id, String name, int purchasePrise, int price,  String description) {
+    public Good(String id, String name, double purchasePrise, double price,  String description) {
         this.id = id;
         this.name = name;
         this.purchasePrise = purchasePrise;
@@ -62,11 +62,11 @@ public class Good {
         this.name = name;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

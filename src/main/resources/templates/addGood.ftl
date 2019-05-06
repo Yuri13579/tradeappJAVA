@@ -13,15 +13,15 @@
 
 <div>
     <fieldset>
-        <legend>Add good</legend>
+        <legend>Добавить товар</legend>
         <form name="good" action="" method="POST">
-            name:<@spring.formInput "goodForm.name" "" "text"/>
+            Название:<@spring.formInput "goodForm.name" "" "text"/>
             <br>
-            price:<@spring.formInput "goodForm.price" "" "number"/>
+            цена продажная:<@spring.formInput "goodForm.price" "" "number"/>
             <br>
-            purchasePrise:<@spring.formInput "goodForm.purchasePrise" "" "number"/>
+            цена закуп:<@spring.formInput "goodForm.purchasePrise" "" "number"/>
             <br>
-            description:<@spring.formInput "goodForm.description" "" "text"/>
+            описание:<@spring.formInput "goodForm.description" "" "text"/>
             <br>
 
             <input type="submit" value="Create"/>

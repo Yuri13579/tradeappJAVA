@@ -11,30 +11,31 @@
 
 <body>
 <a href="<@spring.url '/index'/>">Home</a>
-    <h3>Good list</h3>
+    <h3>Список товаров</h3>
     <br>
     <div>
+
      <div class="table table-sm" style="width: 50%;">
-        <table class="table table-dark">
+        <table  class="table table-dark" border="2" >
             <thead>
-            <tr>
-                <th>Name</th>
-                <th>Prise</th>
-                <th>purchasePrise</th>
-                <th>Description</th>
-                <th>Delete</th>
+            <tr >
+                <th>Название</th>
+                <th>Цена продажная</th>
+                <th>Цена закупочная</th>
+                <th>Описание</th>
+
             </tr>
             </thead>
             <#list goods as good>
             <tbody>
                 <tr>
-                    <td>${good.name}</td>
+                    <td width="250">${good.name}</td>
                     <td>${good.price}</td>
                     <td>${good.purchasePrise}</td>
-                    <td>${good.description}</td>
-                    <td><a href="/good/saleGood/${good.id}">saleGood</a></td>
-                    <td><a href="/good/delete/${good.id}">Delete</a> </td>
-                    <td><a href="/good/edit/${good.id}">Edit</a></td>
+                    <td width="500"; style = font-size:6pt>${good.description}</td>
+                    <td style = font-size:6pt><a href="/good/saleGood/${good.id}">Продажы по товару</a></td>
+                    <td style = font-size:6pt><a href="/good/delete/${good.id}">Удалить</a> </td>
+                    <td style = font-size:6pt><a href="/good/edit/${good.id}">Редактировать</a></td>
                 </tr>
             </tbody>
             </#list>

@@ -14,15 +14,15 @@
 <a href="<@spring.url '/good/list'/>">Good List</a>
 <div>
     <fieldset>
-        <legend>Add good</legend>
+        <legend>Добавить товар</legend>
         <form name="good" action="" method="POST">
-            name:<@spring.formInput "goodForm.name" "" "text"/>
+            название:<@spring.formInput "goodForm.name" "" "text"/>
             <br>
-            price:<@spring.formInput "goodForm.price" "" "number"/>
+            цена розн:<@spring.formInput "goodForm.price" "" "number"/>
             <br>
-            delivery:<@spring.formInput "goodForm.purchasePrise" "" "number"/>
+            цена закуп:<@spring.formInput "goodForm.purchasePrise" "" "number"/>
             <br>
-            description:<@spring.formInput "goodForm.description" "" "text"/>
+            описание:<@spring.formInput "goodForm.description" "" "text"/>
             <br>
             <input type="submit" value="Edit"/>
         </form>

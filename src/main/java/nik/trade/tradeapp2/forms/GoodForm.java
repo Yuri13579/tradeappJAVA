@@ -4,15 +4,15 @@ public class GoodForm {
 
     private String id;
     private String name;
-    private int price;
-    private int purchasePrise;
+    private double price;
+    private double purchasePrise;
     private String description;
 
-    public int getPurchasePrise() {
+    public double getPurchasePrise() {
         return purchasePrise;
     }
 
-    public void setPurchasePrise(int purchasePrise) {
+    public void setPurchasePrise(double purchasePrise) {
         this.purchasePrise = purchasePrise;
     }
 
@@ -32,11 +32,11 @@ public class GoodForm {
         this.name = name;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

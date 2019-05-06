@@ -12,6 +12,6 @@ public interface GoodRepisitory extends MongoRepository <Good, String> {
 
 
     List<Good> findByName(String name);
-    List<Good> findByPrice(int price);
+    List<Good> findByPrice(double price);
     List<Good> findByDescription(String description);
 }

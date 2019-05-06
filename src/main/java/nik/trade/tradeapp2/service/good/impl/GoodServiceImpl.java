@@ -22,7 +22,7 @@ public class GoodServiceImpl implements IGoodService {
     @Autowired
     GoodRepisitory repisitory;
 
-  /*  @PostConstruct
+   /* @PostConstruct
     void init(){
         List<Good> goods= new ArrayList<>(
                 Arrays.asList(

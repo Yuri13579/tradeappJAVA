@@ -25,7 +25,7 @@ public class CustomerServiceImpl implements ICustomerService {
     @Autowired
     CustomerRepisitory  customerRepisitory;
 
-      /*@PostConstruct
+ /*     @PostConstruct
         void init(){
           List<Customer> customers= new ArrayList<>(
                     Arrays.asList(
@@ -41,8 +41,8 @@ public class CustomerServiceImpl implements ICustomerService {
                     )
             );
           customerRepisitory.saveAll(customers);
-
         }*/
+
     @Override
     public Customer create(Customer customer) {
         return this.customerRepisitory.save(customer);

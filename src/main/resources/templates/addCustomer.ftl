@@ -14,16 +14,16 @@
 
 <div>
     <fieldset>
-        <legend>Add customer</legend>
-        <div class="form-group">
+        <legend>Добавить клиента</legend>
+        <div  class="table table-sm">
             <form name="customer" action="" method="POST">
-                name:<@spring.formInput "customerForm.name" "" "text"/>
+                Название:<@spring.formInput "customerForm.name" "" "text"/>
                 <br>
-                addres:<@spring.formInput "customerForm.addres" "" "text"/>
+                Адрес:<@spring.formInput "customerForm.addres" "" "text"/>
                 <br>
-                phone:<@spring.formInput "customerForm.phone" "" "number"/>
+                Телефон:<@spring.formInput "customerForm.phone" "" "number"/>
                 <br>
-                contactPerson:<@spring.formInput "customerForm.contactPerson" "" "text"/>
+                Имя:<@spring.formInput "customerForm.contactPerson" "" "text"/>
                 <br>
 
                 <input type="submit" value="Create"/>
